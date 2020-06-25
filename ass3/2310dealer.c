@@ -24,7 +24,8 @@ int main(int argc, char** argv) {
     // Read player process names into the array of strings (char**)
     char** processPath = malloc(sizeof(char*) * playerCount);
     for (int i = 3; i < argc; i++) {
-        processPath[i - 3] = (char*) malloc(sizeof(char) * strlen(argv[i]));
+        processPath[i - 3] = 
+            (char*) malloc(sizeof(char) * (strlen(argv[i]) + 1));
         strcpy(processPath[i - 3], argv[i]);
     }
     // We expect deck_from_file and read_file_line to set 'valid' to true
@@ -188,7 +189,7 @@ bool is_move_valid(struct Game* game, int playerID, int newSite) {
  *                 the deck file is successful, valid is set to true,
  *                 false otherwise.
  *
- *      Returns:   void.
+ *      Returns:   A string containing what was read from the deck file.
  */
 char* deck_from_file(char* deckFileName, bool* valid) {
     char* rawDeck = read_file_line(deckFileName, valid);

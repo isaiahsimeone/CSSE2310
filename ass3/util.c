@@ -91,7 +91,7 @@ char int_to_char(int number) {
  *     Returns:   True if data was read from stdin, false otherwise
  */
 bool read_stream(char* destination, FILE* stream, int size) {
-    return fgets(destination, size, stream) ? true : false;
+    return fgets(destination, size, stream);
 }
 
 /**
